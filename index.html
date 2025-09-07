@@ -3,59 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Davi Vicente - Empreendedor Digital</title>
+<title>Davi Vicente - Transforme sua Vida Financeira</title>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
   *{margin:0;padding:0;box-sizing:border-box;}
   body{font-family:'Roboto',sans-serif;background:#000;color:#00ff00;overflow-x:hidden;}
 
-  /* Tela inicial Matrix hacker */
-  #matrix-entry{
-    position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999;
-    overflow:hidden;display:flex;justify-content:center;align-items:center;flex-direction:column;
-    font-family:'Courier New',monospace;color:#00ff00;text-align:center;
-  }
+  /* Tela inicial hacker */
+  #matrix-entry{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:9999;overflow:hidden;display:flex;justify-content:center;align-items:center;flex-direction:column;font-family:'Courier New',monospace;color:#00ff00;text-align:center;}
   #matrix-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;}
-  #matrix-text{position:relative; z-index:1; font-size:1.5rem; margin-bottom:20px;}
-  #enter-site{position:relative; z-index:1; display:none; padding:12px 25px; font-size:1rem; font-weight:bold; border:none; border-radius:8px; background:#00ff00; color:#000; cursor:pointer; transition:0.3s;}
-  #enter-site:hover{background:#00aa00;}
+  #matrix-text{position:relative; z-index:1; font-size:1.7rem; margin-bottom:30px;}
+  #enter-site{position:relative; z-index:1; display:none; padding:15px 40px; font-size:1.3rem; font-weight:bold; border:none; border-radius:12px; background:#00ff00; color:#000; cursor:pointer; transition:0.3s;}
+  #enter-site:hover{background:#00aa00; transform:scale(1.05);}
 
-  /* Conteúdo do site */
-  #site-content{opacity:0; transition:opacity 1s ease; background:#000;}
-
+  /* Conteúdo principal */
+  #site-content{opacity:0; transition:opacity 1s ease;}
   header{text-align:center;padding:120px 20px 80px;position:relative;z-index:1;}
-  header h1{font-size:3rem;color:#00ff00;text-shadow:0 0 10px #00ff00;}
-  #typing{font-size:1.4rem;color:#00ff00;border-right:3px solid #00ff00;white-space:nowrap;overflow:hidden;display:inline-block;margin-top:15px;}
+  header h1{font-size:3.5rem;color:#00ff00;text-shadow:0 0 15px #00ff00;}
+  #typing{font-size:1.5rem;color:#00ff00;border-right:3px solid #00ff00;white-space:nowrap;overflow:hidden;display:inline-block;margin-top:20px;}
 
-  section{max-width:900px;margin:50px auto;padding:30px 25px;background:rgba(0,0,0,0.6);border-radius:20px;box-shadow:0 0 25px #00ff0033;transform:translateY(50px) scale(1);opacity:0;transition:all 0.6s ease;}
+  section{max-width:950px;margin:50px auto;padding:40px 35px;background:rgba(0,0,0,0.75);border-radius:25px;box-shadow:0 0 35px #00ff0033;transform:translateY(50px) scale(1);opacity:0;transition:all 0.6s ease;}
   section.visible{transform:translateY(0) scale(1);opacity:1;}
-  section:hover{transform:translateY(0) scale(1.08);box-shadow:0 0 40px #00ff00aa;}
-  h2{color:#00ff00;font-size:2rem;margin-bottom:15px;text-shadow:0 0 5px #00ff0077;}
-  p{line-height:1.7;font-size:1.1rem;}
+  section:hover{transform:translateY(0) scale(1.08);box-shadow:0 0 55px #00ff00aa;}
+  h2{color:#00ff00;font-size:2.3rem;margin-bottom:20px;text-shadow:0 0 5px #00ff0077;}
+  p{line-height:1.8;font-size:1.15rem;}
 
-  .cta-button{display:inline-block;margin-top:20px;padding:15px 35px;font-weight:bold;border-radius:12px;background:#00ff00;color:#000;text-decoration:none;font-size:1.1rem;transition:0.4s;position:relative;overflow:hidden;}
-  .cta-button:hover{background:#00aa00;transform:scale(1.05);}
+  /* Botões CTA */
+  .cta-button{display:inline-block;margin-top:25px;padding:22px 50px;font-weight:bold;border-radius:15px;background:#00ff00;color:#000;text-decoration:none;font-size:1.25rem;transition:0.4s;position:relative;overflow:hidden;}
+  .cta-button:hover{background:#00aa00; transform:scale(1.07);}
   .cta-button::after{content:"";position:absolute;width:100%;height:100%;top:0;left:-100%;background:rgba(255,255,255,0.2);transform:skewX(-20deg);transition:all 0.5s;}
   .cta-button:hover::after{left:100%;}
 
-  .contact a{color:#00ff00;text-decoration:none;display:block;margin:8px 0;font-size:1.1rem;transition:0.3s;}
+  /* Lista de benefícios */
+  .benefits ul{list-style:none;margin-top:15px;}
+  .benefits ul li{margin:12px 0;font-size:1.15rem;}
+  .benefits ul li::before{content:"✔";margin-right:10px;color:#00ff00;}
+
+  /* Depoimentos */
+  .testimonial{background:#000a;border-left:3px solid #00ff00;padding:20px;margin-top:20px;border-radius:12px;}
+
+  /* Contato */
+  .contact a{color:#00ff00;text-decoration:none;display:block;margin:10px 0;font-size:1.15rem;transition:0.3s;}
   .contact a:hover{color:#00aa00;}
 
-  footer{text-align:center;padding:25px;font-size:0.95rem;color:#888;}
+  footer{text-align:center;padding:30px;font-size:1rem;color:#888;}
 
+  /* Particles / Fundo */
   #particles-js,#particles-digital{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
   #particles-digital{pointer-events:none;z-index:0;}
-  section#digital{border:2px solid #00ff00;box-shadow:0 0 50px #00ff0077;}
+  section#digital{border:2px solid #00ff00;box-shadow:0 0 60px #00ff0077;}
 </style>
 </head>
 <body>
 
+<!-- Tela inicial estilo hacker -->
 <div id="matrix-entry">
   <canvas id="matrix-canvas"></canvas>
   <div id="matrix-text"></div>
-  <button id="enter-site">Sim, mostrar o site</button>
+  <button id="enter-site">Sim, quero ver!</button>
 </div>
 
+<!-- Conteúdo principal -->
 <div id="site-content">
   <div id="particles-js"></div>
   <div id="particles-digital"></div>
@@ -65,27 +73,46 @@
     <p id="typing"></p>
   </header>
 
+  <!-- Autoridade -->
   <section>
-    <h2>Sobre mim</h2>
-    <p>Tenho 17 anos, sou apaixonado por tecnologia, computadores e tudo que envolve inovação. Amo programar e mexer com códigos. Sou cristão e meu sonho é ser financeiramente mais bem-sucedido que Elon Musk.</p>
+    <h2>Quem sou eu</h2>
+    <p>Tenho 17 anos, apaixonado por tecnologia, programação e inovação. Sou cristão e ajudo pessoas a conquistarem liberdade financeira através do conhecimento digital e investimentos.</p>
   </section>
 
-  <section>
-    <h2>Paixões</h2>
-    <p>Tecnologia, programação, inovação e tudo que envolve evolução digital.</p>
+  <!-- Benefícios -->
+  <section class="benefits">
+    <h2>Por que investir agora?</h2>
+    <p>Aprender a investir cedo pode transformar sua vida financeira. Veja o que você vai conquistar:</p>
+    <ul>
+      <li>Liberdade financeira</li>
+      <li>Aprendizado rápido e prático</li>
+      <li>Segredos do mercado financeiro descomplicados</li>
+      <li>Renda online passo a passo</li>
+      <li>Transformação da sua vida em meses</li>
+    </ul>
+    <a href="https://kiwify.app/velJGLO?afid=bJwKvrjp" target="_blank" class="cta-button">Quero aprender a investir</a>
   </section>
 
+  <!-- Depoimentos -->
   <section>
-    <h2>Sonhos</h2>
-    <p>Construir um legado no mundo da tecnologia, crescer financeiramente e impactar o mundo de forma positiva.</p>
+    <h2>Depoimentos de quem começou</h2>
+    <div class="testimonial">
+      <p>"Nunca imaginei que poderia entender investimentos tão rápido. Hoje já consigo aplicar e ver resultados reais!" – João, 19 anos</p>
+    </div>
+    <div class="testimonial">
+      <p>"O método é simples e eficiente. Comecei com pouco e já vejo minha liberdade financeira aumentando." – Maria, 22 anos</p>
+    </div>
+    <a href="https://kiwify.app/velJGLO?afid=bJwKvrjp" target="_blank" class="cta-button">Quero meus resultados agora</a>
   </section>
 
+  <!-- CTA final -->
   <section id="digital">
-    <h2>Profissão Digital</h2>
-    <p>Sou empreendedor digital e ajudo pessoas a aprenderem a investir e gerarem renda online de forma prática e rápida. Se você quer começar a investir e transformar sua vida financeira, clique no botão abaixo:</p>
+    <h2>Profissão Digital & Investimentos</h2>
+    <p>Se você quer começar a investir e transformar sua vida financeira, clique no botão abaixo e comece hoje mesmo:</p>
     <a href="https://kiwify.app/velJGLO?afid=bJwKvrjp" target="_blank" class="cta-button">Aprender a investir agora</a>
   </section>
 
+  <!-- Contato -->
   <section class="contact">
     <h2>Contato</h2>
     <a href="mailto:vicentwdavi@gmail.com">📧 vicentwdavi@gmail.com</a>
@@ -107,14 +134,11 @@
   function resizeCanvas(){canvas.width=window.innerWidth; canvas.height=window.innerHeight;}
   window.addEventListener('resize',resizeCanvas);
   resizeCanvas();
-
   const cols=Math.floor(canvas.width/20);
   const ypos=Array(cols).fill(0);
   function matrixEffect(){
-    ctx.fillStyle='rgba(0,0,0,0.05)';
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle='#00ff00';
-    ctx.font='20px monospace';
+    ctx.fillStyle='rgba(0,0,0,0.05)'; ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.fillStyle='#00ff00'; ctx.font='20px monospace';
     for(let i=0;i<ypos.length;i++){
       const text=String.fromCharCode(33+Math.random()*94);
       ctx.fillText(text,i*20,ypos[i]*20);
@@ -125,8 +149,8 @@
   }
   matrixEffect();
 
-  // Terminal typing
-  const phrases=["Está pronto(a) para o que vai ver aqui?"];
+  // Tela inicial typing
+  const phrases=["Está pronto(a) para transformar sua vida financeira?"];
   const matrixText=document.getElementById("matrix-text");
   const enterButton=document.getElementById("enter-site");
   let index=0;
@@ -135,14 +159,17 @@
     else{enterButton.style.display="block";}
   }
   typeMatrix();
-  enterButton.addEventListener("click",()=>{document.getElementById("matrix-entry").style.display="none"; document.getElementById("site-content").style.opacity="1";});
+  enterButton.addEventListener("click",()=>{
+    document.getElementById("matrix-entry").style.display="none";
+    document.getElementById("site-content").style.opacity="1";
+  });
 
   // Particles
   particlesJS("particles-js",{particles:{number:{value:80},size:{value:3},color:{value:"#00ff00"},line_linked:{enable:true,distance:150,color:"#00ff00"},move:{enable:true,speed:2}}});
   particlesJS("particles-digital",{particles:{number:{value:40},size:{value:2},color:{value:"#00ff00"},line_linked:{enable:true,distance:100,color:"#00ff00"},move:{enable:true,speed:1}}});
 
   // Header typing effect
-  const frasesHeader=["Sou apaixonado por tecnologia 🚀","Cristão e sonhador ✝️","Quero ser maior que o Elon Musk 💰"];
+  const frasesHeader=["Sou apaixonado por tecnologia 🚀","Cristão e sonhador ✝️","Quero ajudar você a investir 💰"];
   const typingElement=document.getElementById("typing");
   let fIndex=0,cIndex=0,deleting=false;
   function typeEffect(){
